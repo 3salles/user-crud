@@ -1,10 +1,22 @@
-import { Navbar } from "../components/Navbar";
-import { AppLayout } from "../layouts/AppLayout";
+import { AppLayout } from '../layouts/AppLayout';
+
+import { FaPlus } from 'react-icons/fa';
+
+import { Container, Header, Title, NewUserButton } from './styles';
 
 export function Home() {
   return (
     <AppLayout>
-      <h1>Usuários</h1>
+      <Container>
+        <Header>
+          <Title>Usuários</Title>
+          <NewUserButton>
+            <FaPlus />
+            <p>Novo usuário</p>
+          </NewUserButton>
+        </Header>
+        <article></article>
+      </Container>
     </AppLayout>
-  )
+  );
 }
