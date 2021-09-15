@@ -1,3 +1,6 @@
+import { GoPencil } from 'react-icons/go';
+import { FaTrash } from 'react-icons/fa';
+
 import {
   Container,
   Infos,
@@ -11,24 +14,32 @@ import {
   DeleteButton
 } from './styles';
 
-import { GoPencil } from 'react-icons/go';
-import { FaTrash } from 'react-icons/fa';
+interface User {
+  code: string;
+  profile: string;
+  name: string;
+  birth: string;
+}
 
-export function Card() {
+interface CardProps {
+  user: User;
+}
+
+export function Card({user}: CardProps) {
   return (
     <Container>
       <Infos>
-        <Code>DEL00</Code>
+        <Code>{user?.code}</Code>
         <div>
           <Photo>
             <PhotoImage
-              src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
-              alt='Foto'
+              src={user?.profile}
+              alt={user?.name}
             />
           </Photo>
           <div>
-            <Name>Nome Completo</Name>
-            <BirthDate>dd/mm/yyyy</BirthDate>
+            <Name>{user?.name}</Name>
+            <BirthDate>{user?.birth}</BirthDate>
           </div>
         </div>
       </Infos>

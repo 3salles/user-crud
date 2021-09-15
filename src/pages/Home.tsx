@@ -1,9 +1,11 @@
-import { AppLayout } from '../layouts/AppLayout';
-
 import { FaPlus } from 'react-icons/fa';
 
-import { Container, Header, Title, NewUserButton, UserSection } from './styles';
+import { AppLayout } from '../layouts/AppLayout';
 import { Card } from '../components/Card';
+
+import { Container, Header, Title, NewUserButton, UserSection } from './styles';
+
+import users from '../utils/users.json'
 
 export function Home() {
   return (
@@ -17,7 +19,9 @@ export function Home() {
           </NewUserButton>
         </Header>
         <UserSection>
-          <Card />
+          {users?.map((user, index) => (
+            <Card key={index} user={user} />
+          ))}
         </UserSection>
       </Container>
     </AppLayout>
