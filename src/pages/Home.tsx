@@ -2,7 +2,7 @@ import { AppLayout } from '../layouts/AppLayout';
 
 import { FaPlus } from 'react-icons/fa';
 
-import { Container, Header, Title, NewUserButton } from './styles';
+import { Container, Header, Title, NewUserButton, UserSection } from './styles';
 import { Card } from '../components/Card';
 
 export function Home() {
@@ -16,9 +16,9 @@ export function Home() {
             <p>Novo usuário</p>
           </NewUserButton>
         </Header>
-        <article>
+        <UserSection>
           <Card />
-        </article>
+        </UserSection>
       </Container>
     </AppLayout>
   );

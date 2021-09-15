@@ -11,7 +11,7 @@ export const Container = styled.aside`
   align-items: center;
   max-width: 200px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   @media(max-width: 768px) {
     max-width: 100vw;

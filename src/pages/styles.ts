@@ -25,3 +25,10 @@ export const NewUserButton = styled.button`
   align-items: center;
   gap: 1rem;
 `
+
+export const UserSection = styled.article`
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
