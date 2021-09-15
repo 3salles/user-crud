@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
   :root {
     --background: #ECEDF1;
+    --navbar-background: #353746;
   }
 
   * {
@@ -40,6 +41,7 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     outline: 0;
     border: 0;
+    background: 0;
     transition: filter 0.2s;
 
     &:hover{
