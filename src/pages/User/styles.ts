@@ -57,6 +57,11 @@ export const Field = styled.div`
     font-weight: bold;
     color: #999999;
   }
+
+  > p {
+    font-size: 0.875rem;
+    color: var(--red);
+  }
 `
 
 export const Input = styled.input`
