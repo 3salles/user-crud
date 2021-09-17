@@ -15,7 +15,7 @@ export const Title = styled.h1`
   font-size: 24px;
 `
 export const NewUserButton = styled.button`
-  background: #4F84CA;
+  background: var(--button-background);
   padding: 1rem 1.5rem;
   border-radius: 4px;
   color: #FFF;

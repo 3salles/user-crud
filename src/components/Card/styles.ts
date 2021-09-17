@@ -59,7 +59,7 @@ export const EditButton = styled.button`
   color: #D5DBEF;
 
   &:hover{
-    color: #4F84CA;
+    color: var(--button-color);
   }
 `
 
@@ -68,6 +68,6 @@ export const DeleteButton = styled.button`
   color: #D5DBEF;
 
   &:hover{
-    color: #FDD3D4;
+    color: var(--red);
   }
 `
