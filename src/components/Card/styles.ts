@@ -59,7 +59,7 @@ export const EditButton = styled.button`
   color: #D5DBEF;
 
   &:hover{
-    color: var(--button-color);
+    color: var(--button-background);
   }
 `
 
