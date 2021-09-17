@@ -12,6 +12,8 @@ export const Container = styled.aside`
   max-width: 200px;
   width: 100%;
   height: 100vh;
+  max-height: 100%;
+
 
   @media(max-width: 768px) {
     max-width: 100vw;
