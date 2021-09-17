@@ -37,10 +37,7 @@ const newUserFormSchema = yup.object().shape({
   code: yup.string().required('Código obrigatório'),
   birth: yup
     .date()
-    .max(
-      new Date(),
-      'Você é um viajante do tempo?!'
-    )
+    .max(new Date(), 'Você é um viajante do tempo?!')
     .required('Data obrigatória'),
 });
 
@@ -57,6 +54,10 @@ export function User() {
     console.log(values);
     // Add toastfy
   };
+
+  function handleOnCancel() {
+    window.history.back();
+  }
 
   return (
     <AppLayout>
@@ -102,7 +103,7 @@ export function User() {
             </InfosData>
           </InfosSection>
           <Footer>
-            <CancelButton>Cancelar</CancelButton>
+            <CancelButton onClick={handleOnCancel}>Cancelar</CancelButton>
             <SaveButton
               type='submit'
               disabled={!isDirty || (isDirty && !isValid)}
