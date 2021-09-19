@@ -68,7 +68,7 @@ export function User() {
         <form onSubmit={handleSubmit(handleCreateNewUser)}>
           <InfosSection>
             <Photo>
-              <ChangeImage>
+              <ChangeImage type="button">
                 <GoPencil />
               </ChangeImage>
             </Photo>

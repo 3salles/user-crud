@@ -3,6 +3,13 @@ import styled from "styled-components";
 export const Container = styled.article`
   padding: 3rem;
   width: 100%;
+
+  > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `
 export const Header = styled.header`
   margin-bottom: 1.5rem;
@@ -13,6 +20,7 @@ export const Header = styled.header`
 `
 
 export const InfosSection = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -51,6 +59,7 @@ export const Field = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
+  width: 100%;
 
   > label {
     font-size: 0.875rem;
@@ -65,6 +74,7 @@ export const Field = styled.div`
 `
 
 export const Input = styled.input`
+  width: 100%;
   border: 0;
   border-bottom: 1px solid #999999;
   background: 0;
@@ -76,11 +86,9 @@ export const Input = styled.input`
   }
 `
 
-export const Footer = styled.footer`
+export const Footer = styled.tfoot`
   margin-top: 3rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 5rem;
 `
 
