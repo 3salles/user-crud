@@ -25,6 +25,10 @@ export const InfosSection = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
+
+  @media(max-width: 768px){
+    flex-direction: column;
+  }
 `
 
 
@@ -34,6 +38,10 @@ export const InfosData = styled.div`
   align-items: flex-start;
   gap: 1rem;
   width: 50%;
+
+  @media(max-width: 768px){
+    width: 100%;
+  }
 `
 export const Field = styled.div`
   display: flex;
