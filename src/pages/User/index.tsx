@@ -4,6 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { AppLayout } from '../../layouts/AppLayout';
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 import {
   Container,
@@ -98,11 +101,11 @@ export function User() {
           .post('/user', newData)
           .then(() => {
             history.goBack();
-            console.log('Success');
+            toast.success('Usuário cadastrado com sucesso!')
           })
           .catch((err) => {
             console.error(err);
-            console.log('Error');
+            toast.error('Ocorreu um erro ao cadastrar o usuário. Por favor, tente novamente!');
           });
       });
   };
@@ -154,6 +157,7 @@ export function User() {
           </Footer>
         </form>
       </Container>
+      <ToastContainer />
     </AppLayout>
   );
 }

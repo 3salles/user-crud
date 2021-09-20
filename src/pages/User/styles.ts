@@ -67,7 +67,7 @@ export const Input = styled.input`
   }
 `
 
-export const Footer = styled.tfoot`
+export const Footer = styled.footer`
   margin-top: 3rem;
   display: flex;
   gap: 5rem;

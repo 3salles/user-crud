@@ -9,6 +9,7 @@ import { useHistory } from 'react-router';
 import { useCallback, useEffect, useState } from 'react';
 
 import api from "../../services/api"
+import { toast } from 'react-toastify';
 
 
 export function Home() {
@@ -24,6 +25,7 @@ export function Home() {
     api.delete(`/user/${id}`).then(() => {
       const newUser = users.filter((user) => user?.code !== id)
       setUsers(newUser)
+      toast.success('Usuário deletado com sucesso!')
     })
   }, [users])
 
@@ -31,7 +33,6 @@ export function Home() {
     api.get("/user").then(
       (response) => {
         setUsers(response.data)
-        console.log("users: ", response.data)
       }
     ).catch((error) => console.log(error))
   }, [])
