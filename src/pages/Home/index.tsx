@@ -14,7 +14,6 @@ import api from "../../services/api"
 export function Home() {
   const history = useHistory();
   const [users, setUsers] = useState<User[]>([])
-  console.log("users: ", users )
 
   function handleOnNewUser() {
     history.push('/user/new');

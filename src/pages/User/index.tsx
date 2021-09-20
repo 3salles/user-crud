@@ -51,18 +51,14 @@ export function User() {
     resolver: yupResolver(newUserFormSchema),
     mode: 'onChange',
   });
-  const { errors, isDirty, isValid } = formState;
+  const { errors, isDirty } = formState;
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
 
   const [name, setName] = useState('');
   const [birth, setBirth] = useState('');
   const [avatar, setAvatar] = useState<Blob | string>('');
-  const [files, setFiles] = useState([]);
 
-  // const avatarUrl = avatar?.preview?.replace("blob:", '')
-
-  // console.log("removeURL: ", avatar?.preview?.replace("blob:", ''))
 
   useEffect(() => {
     if (id) {
@@ -83,7 +79,6 @@ export function User() {
     }
   }, [id, reset]);
 
-  function uploadAvatar() {}
 
   const handleCreateNewUser: SubmitHandler<NewUserFormData> = async (data) => {
     const formData = new FormData();
@@ -152,7 +147,7 @@ export function User() {
             <CancelButton onClick={handleOnCancel}>Cancelar</CancelButton>
             <SaveButton
               type='submit'
-              // disabled={!isDirty || (isDirty && !isValid)}
+              disabled={!isDirty}
             >
               Salvar
             </SaveButton>
