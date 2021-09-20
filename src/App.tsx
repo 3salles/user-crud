@@ -13,6 +13,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/user/new' exact component={User} />
+          <Route path='/user/edit/:id' exact component={User} />
         </Switch>
       </BrowserRouter>
       <ToastContainer />

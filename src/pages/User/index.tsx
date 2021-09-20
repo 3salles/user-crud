@@ -6,8 +6,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { AppLayout } from '../../layouts/AppLayout';
 import { ToastContainer, toast } from 'react-toastify';
 
-
-
 import {
   Container,
   Header,
@@ -35,10 +33,6 @@ interface NewUserFormData {
   avatar: Avatar | null;
 }
 
-function formatDate(date: any) {
-  return new Date(date).toLocaleDateString();
-}
-
 const newUserFormSchema = yup.object().shape({
   name: yup.string().required('Nome obrigatório'),
   birth: yup.string().required('Data obrigatória'),
@@ -56,12 +50,12 @@ export function User() {
   });
   const { errors, isDirty } = formState;
   const { id } = useParams<{ id: string }>();
+
   const history = useHistory();
 
   const [name, setName] = useState('');
   const [birth, setBirth] = useState('');
   const [avatar, setAvatar] = useState<Blob | string>('');
-
 
   useEffect(() => {
     if (id) {
@@ -70,44 +64,74 @@ export function User() {
         .then((response) => {
           setName(response.data.name);
           setBirth(response.data.birth);
-          setAvatar(response.data.avatar.preview);
+          setAvatar(response.data.avatar);
 
           reset({
             name: response.data.name,
             birth: response.data.birth,
-            avatar: response.data.avatar.preview,
+            avatar: response.data.avatar,
           });
         })
         .catch((error) => console.log(error));
     }
   }, [id, reset]);
 
-
   const handleCreateNewUser: SubmitHandler<NewUserFormData> = async (data) => {
     const formData = new FormData();
     formData.append('file', avatar);
     formData.append('upload_preset', 'o7o1agnl');
 
-    axios
-      .post('https://api.cloudinary.com/v1_1/trissalles/image/upload', formData)
-      .then((response) => {
-        let newData = {
-          name: data.name,
-          birth: data.birth,
-          avatar: response.data.url,
-        };
+    if (id) {
+      axios
+        .post(
+          'https://api.cloudinary.com/v1_1/trissalles/image/upload',
+          formData
+        )
+        .then((response) => {
+          let newData = {
+            name: data.name,
+            birth: data.birth,
+            avatar: response.data.url,
+          };
 
-        api
-          .post('/user', newData)
-          .then(() => {
-            history.goBack();
-            toast.success('Usuário cadastrado com sucesso!')
-          })
-          .catch((err) => {
-            console.error(err);
-            toast.error('Ocorreu um erro ao cadastrar o usuário. Por favor, tente novamente!');
-          });
-      });
+          api
+            .patch(`/user/${id}`, newData)
+            .then(() => {
+              history.goBack();
+              toast.success('Usuário editado com sucesso!');
+            })
+            .catch((err) => {
+              console.log(err);
+              toast.error('Ocorreu um erro na edição de usuário!');
+            });
+        });
+    } else {
+      axios
+        .post(
+          'https://api.cloudinary.com/v1_1/trissalles/image/upload',
+          formData
+        )
+        .then((response) => {
+          let newData = {
+            name: data.name,
+            birth: data.birth,
+            avatar: response.data.url,
+          };
+
+          api
+            .post('/user', newData)
+            .then(() => {
+              history.goBack();
+              toast.success('Usuário cadastrado com sucesso!');
+            })
+            .catch((err) => {
+              console.error(err);
+              toast.error(
+                'Ocorreu um erro ao cadastrar o usuário. Por favor, tente novamente!'
+              );
+            });
+        });
+    }
   };
 
   function handleOnCancel() {
@@ -148,10 +172,7 @@ export function User() {
           </InfosSection>
           <Footer>
             <CancelButton onClick={handleOnCancel}>Cancelar</CancelButton>
-            <SaveButton
-              type='submit'
-              disabled={!isDirty}
-            >
+            <SaveButton type='submit' disabled={!isDirty}>
               Salvar
             </SaveButton>
           </Footer>

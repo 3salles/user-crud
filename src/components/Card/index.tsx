@@ -1,12 +1,9 @@
 import { GoPencil } from 'react-icons/go';
 import { FaTrash } from 'react-icons/fa';
-import axios from 'axios'
 
-import { useCallback } from 'react';
 import {
   Container,
   Infos,
-  Code,
   Photo,
   PhotoImage,
   Name,
@@ -15,6 +12,7 @@ import {
   EditButton,
   DeleteButton
 } from './styles';
+import { useHistory } from 'react-router';
 
 export interface User {
   avatar: string;
@@ -29,6 +27,11 @@ interface CardProps {
 }
 
 export function Card({user, action}: CardProps) {
+  const history = useHistory();
+
+  function handleOnEdit () {
+    history.push(`/user/edit/${user?.code}`)
+  }
   return (
     <Container>
       <Infos>
@@ -46,7 +49,7 @@ export function Card({user, action}: CardProps) {
         </div>
       </Infos>
       <ButtonsSection>
-        <EditButton>
+        <EditButton onClick={handleOnEdit}>
           <GoPencil />
         </EditButton>
         <DeleteButton onClick={action}>
