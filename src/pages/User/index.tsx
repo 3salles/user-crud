@@ -3,7 +3,6 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-
 import { AppLayout } from '../../layouts/AppLayout';
 
 import {
@@ -20,10 +19,17 @@ import {
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { PhotoDropzone } from '../../components/PhotoDropzone';
+import axios from 'axios';
 
+interface Avatar {
+  name: string;
+  path: string;
+  preview: string;
+}
 interface NewUserFormData {
   name: string;
   birth: string;
+  avatar: Avatar | null;
 }
 
 function formatDate(date: any) {
@@ -32,8 +38,12 @@ function formatDate(date: any) {
 
 const newUserFormSchema = yup.object().shape({
   name: yup.string().required('Nome obrigatório'),
-  birth: yup.string()
-    .required('Data obrigatória'),
+  birth: yup.string().required('Data obrigatória'),
+  avatar: yup.object().shape({
+    name: yup.string(),
+    preview: yup.string(),
+    path: yup.string(),
+  }),
 });
 
 export function User() {
@@ -42,66 +52,65 @@ export function User() {
     mode: 'onChange',
   });
   const { errors, isDirty, isValid } = formState;
-  const { id } = useParams<{ id: string }>()
-  const history = useHistory()
+  const { id } = useParams<{ id: string }>();
+  const history = useHistory();
 
-  const [name, setName] = useState('')
-  const [birth, setBirth] = useState('')
-  const [avatar, setAvatar] = useState(null)
+  const [name, setName] = useState('');
+  const [birth, setBirth] = useState('');
+  const [avatar, setAvatar] = useState<Blob | string>('');
+  const [files, setFiles] = useState([]);
 
-  console.log('avatar: ', avatar)
+  // const avatarUrl = avatar?.preview?.replace("blob:", '')
 
+  // console.log("removeURL: ", avatar?.preview?.replace("blob:", ''))
 
   useEffect(() => {
     if (id) {
-      api.get(`/user/${id}`).then((response) => {
-        setName(response.data.name)
-        setBirth(response.data.birth)
+      api
+        .get(`/user/${id}`)
+        .then((response) => {
+          setName(response.data.name);
+          setBirth(response.data.birth);
+          setAvatar(response.data.avatar.preview);
 
-        reset({
-          name: response.data.name,
-          birth: response.data.birth
-        })
-      }).catch((error) => console.log(error))
-    }
-  }, [id, reset])
-
-  const handleCreateNewUser: SubmitHandler<NewUserFormData> = async (
-    data
-  ) => {
-    const newData = { ...data };
-    if (id) {
-      const formData = new FormData()
-
-      formData.append('id', id);
-
-      Object.entries(newData).forEach(([column, value]) => {
-            formData.append(column, String(value));
+          reset({
+            name: response.data.name,
+            birth: response.data.birth,
+            avatar: response.data.avatar.preview,
           });
-
-
-          api.patch("/user", formData).then(() => {
-            // add toast
-          }).catch((error) => {
-            console.log(error)
-            // toast
-          })
-    } else {
-      const formData = new FormData();
-      Object.entries(newData).forEach(([column, value]) => {
-        formData.append(column, String(value));
-      });
-
-      api.post('/user', formData).then(() => {
-        history.goBack()
-        // add toast
-      }).catch((error) => {
-        console.log(error)
-        // add toast
-      })
+        })
+        .catch((error) => console.log(error));
     }
-  };
+  }, [id, reset]);
 
+  function uploadAvatar() {}
+
+  const handleCreateNewUser: SubmitHandler<NewUserFormData> = async (data) => {
+    const formData = new FormData();
+    formData.append('file', avatar);
+    formData.append('upload_preset', 'o7o1agnl');
+
+    axios
+      .post('https://api.cloudinary.com/v1_1/trissalles/image/upload', formData)
+      .then((response) => {
+        let newData = {
+          name: data.name,
+          birth: data.birth,
+          avatar: response.data.url,
+        };
+
+        api
+          .post('/user', newData)
+          .then(() => {
+            history.goBack();
+            console.log('Success');
+          })
+          .catch((err) => {
+            console.error(err);
+            console.log('Error');
+          });
+      });
+  };
 
   function handleOnCancel() {
     window.history.back();
@@ -143,7 +152,7 @@ export function User() {
             <CancelButton onClick={handleOnCancel}>Cancelar</CancelButton>
             <SaveButton
               type='submit'
-              disabled={!isDirty || (isDirty && !isValid)}
+              // disabled={!isDirty || (isDirty && !isValid)}
             >
               Salvar
             </SaveButton>
