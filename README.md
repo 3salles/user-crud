@@ -32,6 +32,17 @@
 
 It was proposed to create a CRUD of users with the following information: name, date of birth, photo using a MySQL database and Nodejs backend project.
 
+* Desktop Screen
+
+<img src='https://user-images.githubusercontent.com/62452619/134083636-948280f0-2080-4bc6-85bd-b1271aa43efc.png' alt='Desktop Home Screen' width='50%' />
+<img src='https://user-images.githubusercontent.com/62452619/134084249-f06f9dc8-f585-46e0-9807-ee5e359add8c.png' alt='Desktop User Screen' width='50%' />
+
+
+* Mobile Screen
+
+<img src='https://user-images.githubusercontent.com/62452619/134083641-c4b23356-f58a-438f-821f-9663aaf9f8f3.png' alt='Mobile Home Screen'/>
+<img src='https://user-images.githubusercontent.com/62452619/134084243-b130c4c4-74a9-4f58-aaac-e6b97126dda7.png' alt='Mobile User Screen' />
+
 ### :computer: Technologies
 
 * [TypeScript](https://www.typescriptlang.org)
@@ -41,7 +52,6 @@ It was proposed to create a CRUD of users with the following information: name, 
 * [React-hook-forms](https://react-hook-form.com)
 * [Yup](https://github.com/jquense/yup)
 * [Cloudinary](https://cloudinary.com)
-* [TinyDB](https://tinydb.readthedocs.io/en/latest/)
 
 ## :bricks: Installation
 
