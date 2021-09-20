@@ -1,46 +1,103 @@
-# Getting Started with Create React App
+<p align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">User CRUD</h3>
 
-## Available Scripts
+<p align="center">
+  <img src="https://img.shields.io/static/v1?label=Lincense&message=MIT&color=0000ff " alt="License" />
+</p>
 
-In the project directory, you can run:
+<p align="center">
+    This website was developed to Develcode test job
+    <br />
+    <br />
+    <a href="README.md">🇺🇸English</a>
+  </p>
+</p>
 
-### `yarn start`
+<!-- TABLE OF CONTENTS -->
+## 🗂 Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* [About the Project](#book-about-the-project)
+  * [Technologies](#computer-technologies)
+* [Installation](#bricks-installation)
+  * [Prerequisites](#construction-prerequisites)
+  * [Front-end](#lipstick-front-end)
+    * [Installing Dependencies](#construction-installing-dependencies)
+    * [Running Front-end](#arrow_forward-running-front-end)
+  * [Back-end](#file_cabinet-back-end)
+* [License](#page_facing_up-license)
+* [Authors](#woman_technologist-author)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## :book: About The Project
 
-### `yarn test`
+It was proposed to create a CRUD of users with the following information: name, date of birth, photo using a MySQL database and Nodejs backend project.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### :computer: Technologies
 
-### `yarn build`
+* [TypeScript](https://www.typescriptlang.org)
+* [React.js](https://reactjs.org/docs/getting-started.html)
+* [Yarn](https://yarnpkg.com)
+* [Axios](https://axios-http.com/docs/intro)
+* [React-hook-forms](https://react-hook-form.com)
+* [Yup](https://github.com/jquense/yup)
+* [Cloudinary](https://cloudinary.com)
+* [TinyDB](https://tinydb.readthedocs.io/en/latest/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## :bricks: Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project use [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com), you will need them to build its dependencies.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### :construction: Prerequisites
 
-### `yarn eject`
+Clone this project repository:
+```bash
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+$ git clone https://github.com/3salles/user-crud.git
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Enter in `user-crud` folder:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+$ cd user-crud
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+🚨 If you don't have git in your machine, you can install it [here](https://git-scm.com/downloads).
 
-## Learn More
+## :lipstick: Front-end
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### :construction: Installing Dependencies
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+In user-crud folder, install dependencies by the following command:
+
+```bash
+$ yarn install
+```
+
+### :arrow_forward: Running Front-end
+
+Run the following command to see the application:
+
+```bash
+$ yarn start
+```
+
+The application will be available on `http://localhost:3000`.
+
+🚨 Remember to start the backend!
+
+## :file_cabinet: Back-end
+
+You can see how to use the backend project going to its repository [here](https://github.com/3salles/develcode-back)
+
+
+## :page_facing_up: License
+
+This project uses [MIT]() license.
+
+## :woman_technologist: Author
+
+<p align="center">
+  <a href="https://github.com/3salles"><img src="https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/3salles" alt="Github" /></a>
+  <a href="https://www.linkedin.com/in/beatriz-salles-b701a31a6/"><img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/beatriz-salles-b701a31a6" alt="LinkendIn" /></a>
+  <a href="mailto:beatrizsallesss@gmail.com"><img src="https://img.shields.io/badge/-Gmail-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:beatrizsallesss@gmail.com" alt="Gmail" /></a>
+</p>
+
+<p align="center">Developed with 💜 by Beatriz Salles</p>
