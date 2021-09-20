@@ -13,6 +13,8 @@ import {
   DeleteButton
 } from './styles';
 import { useHistory } from 'react-router';
+import { AlertModal } from '../Modal/AlertModal';
+import { useState } from 'react';
 
 export interface User {
   avatar: string;
@@ -29,9 +31,20 @@ interface CardProps {
 export function Card({user, action}: CardProps) {
   const history = useHistory();
 
+  const [openModal, setOpenModal] = useState(false)
+
   function handleOnEdit () {
     history.push(`/user/edit/${user?.code}`)
   }
+
+  function handleOnOpenModal () {
+    setOpenModal(true);
+  }
+
+  function handleOnCloseModal () {
+    setOpenModal(false);
+  }
+
   return (
     <Container>
       <Infos>
@@ -52,10 +65,11 @@ export function Card({user, action}: CardProps) {
         <EditButton onClick={handleOnEdit}>
           <GoPencil />
         </EditButton>
-        <DeleteButton onClick={action}>
+        <DeleteButton onClick={handleOnOpenModal}>
           <FaTrash />
         </DeleteButton>
       </ButtonsSection>
+      <AlertModal onRequestClose={handleOnCloseModal} isOpen={openModal} />
     </Container>
   );
 }
