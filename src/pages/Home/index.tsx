@@ -8,7 +8,7 @@ import { Container, Header, Title, NewUserButton, UserSection } from './styles';
 import { useHistory } from 'react-router';
 import { useCallback, useEffect, useState } from 'react';
 
-import axios from "axios"
+import api from "../../services/api"
 
 
 export function Home() {
@@ -22,14 +22,14 @@ export function Home() {
 
 
   const handleDeleteUser = useCallback((id:string) => {
-    axios.delete(`https://develcode-back.herokuapp.com/user/${id}`).then(() => {
+    api.delete(`/user/${id}`).then(() => {
       const newUser = users.filter((user) => user?.Codigo !== id)
       setUsers(newUser)
     })
   }, [users])
 
   useEffect(() => {
-    axios.get("https://develcode-back.herokuapp.com/user").then(
+    api.get("/user").then(
       (response) => {
         setUsers(response.data)
         console.log("users: ", response.data)
