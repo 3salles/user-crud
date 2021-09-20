@@ -1,5 +1,4 @@
-import { Button } from './../../Navbar/styles';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const customStyles = {
   content: {
@@ -36,7 +35,7 @@ export const Content = styled.div`
   span {
     font-size: 0.875rem;
   }
-`
+`;
 
 export const Footer = styled.footer`
   display: flex;
@@ -45,25 +44,24 @@ export const Footer = styled.footer`
   margin-top: 2rem;
 
   > button {
-
     border-radius: 8px;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.125rem;
     padding: 1rem;
   }
-`
+`;
 
 export const YesButton = styled.button`
   background: var(--button-background);
-  color: #FFF;
-`
+  color: #fff;
+`;
 export const NoButton = styled.button`
   border: 1px solid var(--button-background);
   color: var(--button-background);
 
   &:hover {
     background: var(--button-background);
-    color: #FFF;
+    color: #fff;
   }
-`
+`;

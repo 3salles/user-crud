@@ -10,7 +10,7 @@ import {
   BirthDate,
   ButtonsSection,
   EditButton,
-  DeleteButton
+  DeleteButton,
 } from './styles';
 import { useHistory } from 'react-router';
 import { AlertModal } from '../Modal/AlertModal';
@@ -28,20 +28,20 @@ interface CardProps {
   action: () => void;
 }
 
-export function Card({user, action}: CardProps) {
+export function Card({ user, action }: CardProps) {
   const history = useHistory();
 
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
 
-  function handleOnEdit () {
-    history.push(`/user/edit/${user?.code}`)
+  function handleOnEdit() {
+    history.push(`/user/edit/${user?.code}`);
   }
 
-  function handleOnOpenModal () {
+  function handleOnOpenModal() {
     setOpenModal(true);
   }
 
-  function handleOnCloseModal () {
+  function handleOnCloseModal() {
     setOpenModal(false);
   }
 
@@ -50,10 +50,7 @@ export function Card({user, action}: CardProps) {
       <Infos>
         <div>
           <Photo>
-            <PhotoImage
-              src={user?.avatar}
-              alt={user?.name}
-            />
+            <PhotoImage src={user?.avatar} alt={user?.name} />
           </Photo>
           <div>
             <Name>{user?.name}</Name>
@@ -69,7 +66,11 @@ export function Card({user, action}: CardProps) {
           <FaTrash />
         </DeleteButton>
       </ButtonsSection>
-      <AlertModal onRequestClose={handleOnCloseModal} isOpen={openModal} action={action} />
+      <AlertModal
+        onRequestClose={handleOnCloseModal}
+        isOpen={openModal}
+        action={action}
+      />
     </Container>
   );
 }

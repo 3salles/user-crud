@@ -10,14 +10,18 @@ interface AlertModalProps {
   action: () => void;
 }
 
-export function AlertModal({ isOpen, onRequestClose, action }: AlertModalProps) {
+export function AlertModal({
+  isOpen,
+  onRequestClose,
+  action,
+}: AlertModalProps) {
   function handleOnYesQuestion() {
-    action ()
-    onRequestClose()
+    action();
+    onRequestClose();
   }
 
   function handleOnNoQuestion() {
-    onRequestClose()
+    onRequestClose();
   }
 
   return (
@@ -33,7 +37,10 @@ export function AlertModal({ isOpen, onRequestClose, action }: AlertModalProps) 
             <GrClose />
           </button>
         </header>
-        <img src='https://img.icons8.com/external-flatarticons-blue-flatarticons/65/000000/external-alert-web-security-flatarticons-blue-flatarticons.png' />
+        <img
+          alt='Ícone de Alerta'
+          src='https://img.icons8.com/external-flatarticons-blue-flatarticons/65/000000/external-alert-web-security-flatarticons-blue-flatarticons.png'
+        />
 
         <h2>Cuidado!</h2>
         <p>Você realmente quer deletar usuário? </p>

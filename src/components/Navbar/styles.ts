@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from 'styled-components';
 
 interface IButtonProps {
   isActive: boolean;
@@ -14,8 +14,7 @@ export const Container = styled.aside`
   height: 100vh;
   max-height: 100%;
 
-
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     max-width: 100vw;
     width: 100%;
     max-height: 4rem;
@@ -25,42 +24,44 @@ export const Container = styled.aside`
     align-items: flex-start;
     flex-direction: row;
   }
-`
+`;
 
 export const Logo = styled.p`
-  color: #F7AD00;
+  color: #f7ad00;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: 12rem;
   padding: 2rem;
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     display: none;
   }
-`
+`;
 
 export const Button = styled.button<IButtonProps>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #46A4C6;
+  color: #46a4c6;
   font-size: 1.125rem;
 
-  ${({isActive}) => isActive && css`
-    background: #4A4B5D;
-    width: 100%;
-    padding: 0.5rem;
-    border-left: 2px solid #46A4C6;
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      background: #4a4b5d;
+      width: 100%;
+      padding: 0.5rem;
+      border-left: 2px solid #46a4c6;
 
-    @media(max-width: 768px) {
-    width: 6.25rem;
-    border: 0;
-    border-top: 2px solid #46A4C6;
-  }
-  `}
+      @media (max-width: 768px) {
+        width: 6.25rem;
+        border: 0;
+        border-top: 2px solid #46a4c6;
+      }
+    `}
 
   @media(max-width: 768px) {
     flex-direction: column;
   }
-`
+`;

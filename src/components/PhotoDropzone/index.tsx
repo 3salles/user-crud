@@ -22,7 +22,7 @@ export function PhotoDropzone({ file, setFile }: PhotoDropzoneProps) {
 
   function handleOnDelete() {
     setFile(null);
-  };
+  }
 
   useEffect(
     () => () => {

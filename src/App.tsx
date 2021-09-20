@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Modal from 'react-modal'
+import Modal from 'react-modal';
 
 import 'react-toastify/dist/ReactToastify.css';
 
