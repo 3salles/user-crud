@@ -9,6 +9,7 @@ export const Container = styled.article`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
 `
 export const Header = styled.header`
@@ -26,33 +27,13 @@ export const InfosSection = styled.div`
   gap: 2rem;
 `
 
-export const Photo = styled.div`
-  height: 150px;
-  width: 150px;
-  border-radius: 999px;
-  background: gray;
-  position: relative;
-`
-export const PhotoImage = styled.img`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 999px;
-`
-
-export const ChangeImage = styled.button`
-  position: absolute;
-  font-size: 1.125rem;
-  color: #FFF;
-  bottom: 0.75rem;
-  right: 1.5rem;
-`
 
 export const InfosData = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  width: 50%;
 `
 export const Field = styled.div`
   display: flex;
@@ -86,7 +67,7 @@ export const Input = styled.input`
   }
 `
 
-export const Footer = styled.tfoot`
+export const Footer = styled.footer`
   margin-top: 3rem;
   display: flex;
   gap: 5rem;

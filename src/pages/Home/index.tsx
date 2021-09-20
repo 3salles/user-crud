@@ -9,12 +9,12 @@ import { useHistory } from 'react-router';
 import { useCallback, useEffect, useState } from 'react';
 
 import api from "../../services/api"
+import { toast } from 'react-toastify';
 
 
 export function Home() {
   const history = useHistory();
   const [users, setUsers] = useState<User[]>([])
-  console.log("users: ", users )
 
   function handleOnNewUser() {
     history.push('/user/new');
@@ -23,8 +23,9 @@ export function Home() {
 
   const handleDeleteUser = useCallback((id:string) => {
     api.delete(`/user/${id}`).then(() => {
-      const newUser = users.filter((user) => user?.Codigo !== id)
+      const newUser = users.filter((user) => user?.code !== id)
       setUsers(newUser)
+      toast.success('Usuário deletado com sucesso!')
     })
   }, [users])
 
@@ -32,7 +33,6 @@ export function Home() {
     api.get("/user").then(
       (response) => {
         setUsers(response.data)
-        console.log("users: ", response.data)
       }
     ).catch((error) => console.log(error))
   }, [])
@@ -49,7 +49,7 @@ export function Home() {
         </Header>
         <UserSection>
           {users?.map((user, index) => (
-            <Card key={index} user={user}  action={() => handleDeleteUser(user?.Codigo)}/>
+            <Card key={index} user={user}  action={() => handleDeleteUser(user?.code)}/>
           ))}
         </UserSection>
       </Container>

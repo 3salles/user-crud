@@ -2,6 +2,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { User } from './pages/User';
 import { GlobalStyle } from './styles/global';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
           <Route path='/user/new' exact component={User} />
         </Switch>
       </BrowserRouter>
+      <ToastContainer />
     </>
   );
 }
