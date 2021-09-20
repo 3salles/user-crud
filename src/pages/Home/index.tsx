@@ -23,7 +23,7 @@ export function Home() {
 
   const handleDeleteUser = useCallback((id:string) => {
     api.delete(`/user/${id}`).then(() => {
-      const newUser = users.filter((user) => user?.Codigo !== id)
+      const newUser = users.filter((user) => user?.code !== id)
       setUsers(newUser)
     })
   }, [users])
@@ -49,7 +49,7 @@ export function Home() {
         </Header>
         <UserSection>
           {users?.map((user, index) => (
-            <Card key={index} user={user}  action={() => handleDeleteUser(user?.Codigo)}/>
+            <Card key={index} user={user}  action={() => handleDeleteUser(user?.code)}/>
           ))}
         </UserSection>
       </Container>

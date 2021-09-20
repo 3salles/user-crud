@@ -17,10 +17,10 @@ import {
 } from './styles';
 
 export interface User {
-  Foto: string;
-  Nome: string;
-  DtNasci: string;
-  Codigo: string;
+  avatar: string;
+  name: string;
+  birth: string;
+  code: string;
 }
 
 interface CardProps {
@@ -35,13 +35,13 @@ export function Card({user, action}: CardProps) {
         <div>
           <Photo>
             <PhotoImage
-              src={user?.Foto}
-              alt={user?.Nome}
+              src={user?.avatar}
+              alt={user?.name}
             />
           </Photo>
           <div>
-            <Name>{user?.Nome}</Name>
-            <BirthDate>{user?.DtNasci}</BirthDate>
+            <Name>{user?.name}</Name>
+            <BirthDate>{user?.birth}</BirthDate>
           </div>
         </div>
       </Infos>
