@@ -9,6 +9,7 @@ export const Container = styled.article`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
 `
 export const Header = styled.header`
@@ -53,6 +54,7 @@ export const InfosData = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  width: 50%;
 `
 export const Field = styled.div`
   display: flex;

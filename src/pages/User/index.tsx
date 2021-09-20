@@ -24,7 +24,6 @@ import {
 
 interface NewUserFormData {
   name: string;
-  code: string;
   birth: string;
 }
 
@@ -34,7 +33,6 @@ function formatDate(date: any) {
 
 const newUserFormSchema = yup.object().shape({
   name: yup.string().required('Nome obrigatório'),
-  code: yup.string().required('Código obrigatório'),
   birth: yup
     .date()
     .max(new Date(), 'Você é um viajante do tempo?!')
@@ -73,15 +71,6 @@ export function User() {
               </ChangeImage>
             </Photo>
             <InfosData>
-              <Field>
-                <label>Código</label>
-                <Input
-                  type='text'
-                  placeholder='Digite o código'
-                  {...register('code')}
-                />
-                <p>{errors?.code?.message}</p>
-              </Field>
               <Field>
                 <label>Nome Completo</label>
                 <Input
