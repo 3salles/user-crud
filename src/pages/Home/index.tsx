@@ -1,19 +1,41 @@
 import { FaPlus } from 'react-icons/fa';
 
 import { AppLayout } from '../../layouts/AppLayout';
-import { Card } from '../../components/Card';
+import { Card, User } from '../../components/Card';
 
 import { Container, Header, Title, NewUserButton, UserSection } from './styles';
 
-import users from '../../utils/users.json';
 import { useHistory } from 'react-router';
+import { useCallback, useEffect, useState } from 'react';
+
+import axios from "axios"
+
 
 export function Home() {
   const history = useHistory();
+  const [users, setUsers] = useState<User[]>([])
+  console.log("users: ", users )
 
   function handleOnNewUser() {
     history.push('/user/new');
   }
+
+
+  const handleDeleteUser = useCallback((id:string) => {
+    axios.delete(`https://develcode-back.herokuapp.com/user/${id}`).then(() => {
+      const newUser = users.filter((user) => user?.Codigo !== id)
+      setUsers(newUser)
+    })
+  }, [users])
+
+  useEffect(() => {
+    axios.get("https://develcode-back.herokuapp.com/user").then(
+      (response) => {
+        setUsers(response.data)
+        console.log("users: ", response.data)
+      }
+    ).catch((error) => console.log(error))
+  }, [])
 
   return (
     <AppLayout>
@@ -27,7 +49,7 @@ export function Home() {
         </Header>
         <UserSection>
           {users?.map((user, index) => (
-            <Card key={index} user={user} />
+            <Card key={index} user={user}  action={() => handleDeleteUser(user?.Codigo)}/>
           ))}
         </UserSection>
       </Container>

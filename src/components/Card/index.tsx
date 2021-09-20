@@ -1,6 +1,8 @@
 import { GoPencil } from 'react-icons/go';
 import { FaTrash } from 'react-icons/fa';
+import axios from 'axios'
 
+import { useCallback } from 'react';
 import {
   Container,
   Infos,
@@ -14,32 +16,32 @@ import {
   DeleteButton
 } from './styles';
 
-interface User {
-  code: string;
-  profile: string;
-  name: string;
-  birth: string;
+export interface User {
+  Foto: string;
+  Nome: string;
+  DtNasci: string;
+  Codigo: string;
 }
 
 interface CardProps {
   user: User;
+  action: () => void;
 }
 
-export function Card({user}: CardProps) {
+export function Card({user, action}: CardProps) {
   return (
     <Container>
       <Infos>
-        <Code>{user?.code}</Code>
         <div>
           <Photo>
             <PhotoImage
-              src={user?.profile}
-              alt={user?.name}
+              src={user?.Foto}
+              alt={user?.Nome}
             />
           </Photo>
           <div>
-            <Name>{user?.name}</Name>
-            <BirthDate>{user?.birth}</BirthDate>
+            <Name>{user?.Nome}</Name>
+            <BirthDate>{user?.DtNasci}</BirthDate>
           </div>
         </div>
       </Infos>
@@ -47,7 +49,7 @@ export function Card({user}: CardProps) {
         <EditButton>
           <GoPencil />
         </EditButton>
-        <DeleteButton>
+        <DeleteButton onClick={action}>
           <FaTrash />
         </DeleteButton>
       </ButtonsSection>
