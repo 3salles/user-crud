@@ -7,9 +7,19 @@ import { customStyles, Content, Footer, YesButton, NoButton } from './styles';
 interface AlertModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
+  action: () => void;
 }
 
-export function AlertModal({ isOpen, onRequestClose }: AlertModalProps) {
+export function AlertModal({ isOpen, onRequestClose, action }: AlertModalProps) {
+  function handleOnYesQuestion() {
+    action ()
+    onRequestClose()
+  }
+
+  function handleOnNoQuestion() {
+    onRequestClose()
+  }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -30,8 +40,8 @@ export function AlertModal({ isOpen, onRequestClose }: AlertModalProps) {
         <span>Esta operação não pode ser desfeita!</span>
 
         <Footer>
-          <NoButton>Não</NoButton>
-          <YesButton>Sim</YesButton>
+          <NoButton onClick={handleOnNoQuestion}>Não</NoButton>
+          <YesButton onClick={handleOnYesQuestion}>Sim</YesButton>
         </Footer>
       </Content>
     </Modal>

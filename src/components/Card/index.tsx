@@ -69,7 +69,7 @@ export function Card({user, action}: CardProps) {
           <FaTrash />
         </DeleteButton>
       </ButtonsSection>
-      <AlertModal onRequestClose={handleOnCloseModal} isOpen={openModal} />
+      <AlertModal onRequestClose={handleOnCloseModal} isOpen={openModal} action={action} />
     </Container>
   );
 }
