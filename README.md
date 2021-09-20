@@ -31,6 +31,7 @@
 ## :book: About The Project
 
 It was proposed to create a CRUD of users with the following information: name, date of birth, photo using a MySQL database and Nodejs backend project.
+Demo site is [here](https://user-crud-2dddzcyel-3salles.vercel.app).
 
 * Desktop Screen
 
@@ -91,16 +92,17 @@ $ yarn start
 
 The application will be available on `http://localhost:3000`.
 
-🚨 Remember to start the backend!
+🚨 This is using a deployed backend link into [Heroku](https://dashboard.heroku.com). If you want to run the backend locally, remember
+to change in `api.ts` into `services`folder the access origin link.
 
 ## :file_cabinet: Back-end
 
-You can see how to use the backend project going to its repository [here](https://github.com/3salles/develcode-back)
+You can see how to use the backend project going to its repository [here](https://github.com/3salles/develcode-back).
 
 
 ## :page_facing_up: License
 
-This project uses [MIT]() license.
+This project uses [MIT](https://github.com/3salles/user-crud/blob/main/LICENSE) license.
 
 ## :woman_technologist: Author
 
